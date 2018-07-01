@@ -13,7 +13,7 @@
     init: function(options) {
       var state = {
         timer: null,
-        timerSeconds: 15,
+        timerSeconds: 20,
         callback: function() {},
         timerCurrent: 0,
         showPercentage: false,
@@ -44,7 +44,7 @@
     stopWatch: function() {
       var data = $(this).data('pietimer');
       if (data) {
-        var seconds = (data.timerFinish-(new Date().getTime()))/1500;
+        var seconds = (data.timerFinish-(new Date().getTime()))/2000;
         if (seconds <= 0) {
           clearInterval(data.timer);
           $(this).pietimer('drawTimer', 100);
@@ -84,7 +84,7 @@
     start: function() {
       var data = $(this).data('pietimer');
       if (data) {
-        data.timerFinish = new Date().getTime()+(data.timerSeconds*1500);
+        data.timerFinish = new Date().getTime()+(data.timerSeconds*2000);
         $(this).pietimer('drawTimer', 0);
         data.timer = setInterval("$this.pietimer('stopWatch')", 50);
       }
